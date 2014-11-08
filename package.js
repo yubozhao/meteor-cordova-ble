@@ -1,7 +1,7 @@
 Package.describe({
   name: 'bozhao:cordova-ble',
   summary: 'BLE plugin for meteor',
-  version: '0.0.1',
+  version: '0.0.3',
   git: 'https://github.com/yubozhao/meteor-cordova-ble.git'
 });
 

@@ -11,8 +11,39 @@
  * underscores.
  */
 
+loadPlugin = function () {
+  if (_.isObject(evothings)) {
+    return;
+  }
+  if (typeof window.evothings == 'object') {
+    evothings = window.evothings;  
+    console.log('load from window');
+    return;
+  }
+  if (typeof window.plugins == 'object') {
+    if (typeof window.plugins.evothings == 'object') {
+      evothings = window.plugins.evothings;
+    console.log('load from window.plugin');
+      return;
+    }
+  }
+  if (cordova && typeof cordova.evothings == 'object') {
+    evothings = cordova.evothings;
+    console.log('load from cordova');
+    return;
+  }
+  if (cordova && typeof cordova.plugins == 'object') {
+    if (typeof cordova.plugins.evothings == 'object') {
+      evothings = cordova.plugins.evothings;
+    console.log('load from cordova.plugin');
+      return;
+    }
+  }
+};
+
+loadPlugin();
 // Object that holds BLE data and functions.
-var easyble = (function()
+easyble = (function()
 {
 	/** Main object in the EasyBLE API. */
 	var easyble = {};

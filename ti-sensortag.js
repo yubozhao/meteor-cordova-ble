@@ -36,7 +36,7 @@ function LogServices(device)
 	}
 }
 
-var TISensorTag = (function()
+TISensorTag = (function()
 {
 	var sensortag = {}
 
