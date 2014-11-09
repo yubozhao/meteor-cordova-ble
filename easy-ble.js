@@ -39,14 +39,20 @@ loadPlugin = function () {
       return;
     }
   }
+  if (navigator && typeof navigator.evothings == 'object') {
+    evothings = navigator.evothings;
+    console.log('load from navigator');
+    return;
+  }
 };
 
-loadPlugin();
 // Object that holds BLE data and functions.
 easyble = (function()
 {
 	/** Main object in the EasyBLE API. */
-	var easyble = {};
+  var easyble = {};
+
+  easyble.loadPlugin = loadPlugin;
 
 	/**
 	 * Set to true to report found devices only once,
@@ -114,6 +120,8 @@ easyble = (function()
 	/** Stop scanning for devices. */
 	easyble.stopScan = function()
 	{
+    //XXX
+    easyble.loadPlugin();
 		evothings.ble.stopScan();
 	};
 
